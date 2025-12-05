@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    font-family: monospace;
+  }
+
+  /* Intro */
+  #start-msg {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: 7vw;
+    font-weight: bold;
+    animation: introFlash 0.3s infinite;
+    text-shadow: 0 0 20px red;
+  }
+
+  @keyframes introFlash {
+    0% { color: red; text-shadow: 0 0 20px red; }
+    50% { color: #ff6b6b; text-shadow: 0 0 50px #ff6b6b; }
+    100% { color: red; text-shadow: 0 0 20px red; }
+  }
+
+  /* Hardcore background flashing */
+  @keyframes bgFlash {
+    0%   { background: black; }
+    25%  { background: #2b0000; }
+    50%  { background: #4a0000; }
+    75%  { background: #ff0000; }
+    100% { background: black; }
+  }
+
+  /* Text flashing */
+  @keyframes textFlash {
+    0%   { color: red; text-shadow: 0 0 10px red; }
+    50%  { color: #ff5050; text-shadow: 0 0 40px #ff5050; }
+    100% { color: red; text-shadow: 0 0 10px red; }
+  }
+
+  /* Screen shake */
+  @keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(3px, -3px); }
+    50% { transform: translate(-3px, 3px); }
+    75% { transform: translate(3px, 3px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .drop {
+    position: absolute;
+    font-weight: bold;
+    animation: textFlash 0.15s infinite;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<div id="start-msg">YOUR DEVICE IS HACKED BY SMI FAISAL 😈</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("start-msg").style.display = "none";
+    startDangerMode();
+}, 2500);
+
+
+function startDangerMode() {
+    // Background chaos + shaking
+    document.body.style.animation = "bgFlash 0.15s infinite, shake 0.1s infinite";
+
+    const dangerWords = [
+        "CRITICAL BREACH ⚠️",
+        "DATA LEAKED 💀",
+        "SYSTEM OVERRIDE 🔥",
+        "ACCESS BLOCKED ❗",
+        "ROOT CONTROL LOST",
+        "INTRUSION DETECTED ❌",
+        "SECURITY COLLAPSE 🚨"
+    ];
+
+    // Lanes so words NEVER overlap
+    const lanes = 6;
+    const laneWidth = window.innerWidth / lanes;
+    const laneHeights = new Array(lanes).fill(-100);
+
+    function spawnWord() {
+        const div = document.createElement("div");
+        div.className = "drop";
+        div.innerText = dangerWords[Math.floor(Math.random()*dangerWords.length)];
+
+        // Auto mobile font scale
+        div.style.fontSize = (window.innerWidth * 0.07) + "px";
+
+        // Choose lane
+        const lane = Math.floor(Math.random() * lanes);
+        div.style.left = (lane * laneWidth + laneWidth*0.2) + "px";
+        div.style.top = "-80px";
+
+        document.body.appendChild(div);
+
+        // fast drop
+        let speed = 6 + Math.random() * 5;
+
+        function anim() {
+            let top = parseFloat(div.style.top);
+
+            if (top < window.innerHeight) {
+                div.style.top = (top + speed) + "px";
+                laneHeights[lane] = top;
+                requestAnimationFrame(anim);
+            } else {
+                div.remove();
+            }
+        }
+
+        anim();
+    }
+
+    setInterval(spawnWord, 220);
+}
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hacker Chaos</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    font-family: monospace;
+}
+
+/* Intro */
+#start-msg {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: 7vw;
+    font-weight: bold;
+    animation: introFlash 0.5s infinite;
+    text-shadow: 0 0 10px red;
+}
+
+@keyframes introFlash {
+    0%, 100% { color: red; text-shadow: 0 0 10px red; }
+    50% { color: #ff6b6b; text-shadow: 0 0 25px #ff6b6b; }
+}
+
+/* Background chaos */
+@keyframes bgFlash {
+    0%,100% { background: black; }
+    50% { background: #4a0000; }
+}
+
+/* Shake */
+@keyframes shake {
+    0%,100% { transform: translate(0,0); }
+    25% { transform: translate(2px,-2px); }
+    50% { transform: translate(-2px,2px); }
+    75% { transform: translate(2px,2px); }
+}
+
+.drop {
+    position: absolute;
+    font-weight: bold;
+    color: red;
+    white-space: nowrap;
+    font-size: 5vw;
+    text-shadow: 0 0 5px red;
+    will-change: transform;
+}
+</style>
+</head>
+<body>
+
+<div id="start-msg">YOUR DEVICE IS HACKED BY SMI FAISAL 😈</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("start-msg").style.display = "none";
+    startDangerMode();
+}, 2000);
+
+function startDangerMode() {
+    document.body.style.animation = "bgFlash 1s infinite, shake 0.5s infinite";
+
+    const dangerWords = [
+        "CRITICAL BREACH ⚠️",
+        "DATA LEAKED 💀",
+        "SYSTEM OVERRIDE 🔥",
+        "ACCESS BLOCKED ❗",
+        "ROOT CONTROL LOST",
+        "INTRUSION DETECTED ❌",
+        "SECURITY COLLAPSE 🚨"
+    ];
+
+    const lanes = 6;
+    const laneWidth = window.innerWidth / lanes;
+    let activeDrops = 0;
+    const maxDrops = 10; // prevent overload
+
+    function spawnWord() {
+        if (activeDrops >= maxDrops) return; // cap drops
+        activeDrops++;
+
+        const div = document.createElement("div");
+        div.className = "drop";
+        div.innerText = dangerWords[Math.floor(Math.random()*dangerWords.length)];
+        div.style.left = (Math.floor(Math.random()*lanes) * laneWidth + laneWidth*0.2) + "px";
+        div.style.top = "-10%";
+
+        document.body.appendChild(div);
+
+        const speed = 2 + Math.random() * 3;
+        let top = -window.innerHeight*0.1;
+
+        function move() {
+            top += speed;
+            div.style.transform = `translateY(${top}px)`;
+            if (top < window.innerHeight) {
+                requestAnimationFrame(move);
+            } else {
+                div.remove();
+                activeDrops--;
+            }
+        }
+        move();
+    }
+
+    setInterval(spawnWord, 400); // slower spawn
+}
+</script>
+
+</body>
+</html>
